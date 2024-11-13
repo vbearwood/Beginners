@@ -1,0 +1,96 @@
+/* Quiz.css */
+.quiz-container {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Arial', sans-serif; /* Choose a clear font for readability */
+}
+
+.quiz-question {
+    margin-bottom: 20px;
+}
+
+.quiz-options button {
+    background-color: #444; /* Dark gray for buttons */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .quiz-options button:hover {
+        background-color: #666; /* Lighter gray on hover */
+    }
+
+.quiz-result {
+    text-align: center;
+}
+
+.success-button {
+    background-color: #4CAF50; /* Green for the success button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+    .success-button:hover {
+        background-color: #45a049; /* Darker green on hover */
+    }
+
+.retake-quiz-button {
+    background-color: #ff5722; /* Red for the retake button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+    .retake-quiz-button:hover {
+        background-color: #e64a19; /* Darker red on hover */
+    }
+
+.warning {
+    color: #ff0000; /* Red for warnings */
+}
+.back-button {
+    margin-bottom: 20px; /* Space between button and content */
+    padding: 10px 15px; /* Padding for better click area */
+    background-color: #007BFF; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+    .back-button:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
+
+.missed-questions {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f8f8f8; /* light gray background */
+    border: 1px solid #ddd; /* light border */
+    border-radius: 5px; /* rounded corners */
+}
+
+.missed-question {
+    display: block; /* makes each question on a new line */
+    margin: 5px 0;
+    color: #ff0000; /* red text for missed questions */
+}

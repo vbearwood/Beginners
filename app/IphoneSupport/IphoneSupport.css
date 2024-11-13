@@ -25,6 +25,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -52,9 +53,9 @@
     transition: background-color 0.3s; /* Smooth transition for background color */
 }
 
-.search-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
+    .search-button:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
 
 /* Comment box styling */
 .feedback-form {
@@ -75,10 +76,10 @@
     resize: none; /* Disable resizing */
 }
 
-.comment-input:focus {
-    border-color: #007bff; /* Change border color on focus */
-    outline: none; /* Remove default outline */
-}
+    .comment-input:focus {
+        border-color: #007bff; /* Change border color on focus */
+        outline: none; /* Remove default outline */
+    }
 
 /* Displaying comments */
 .comment-display {
@@ -109,9 +110,9 @@
     cursor: pointer; /* Pointer on hover */
 }
 
-.reply-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
+    .reply-button:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
 
 /* Styling for replies */
 .replies {
@@ -143,3 +144,5 @@ body {
     align-items: center;
     justify-content: center; /* Center content vertically */
 }
+
+/* Removed .progress-tracker-box styling as it's now in ProgressTracker.css */

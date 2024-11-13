@@ -1,0 +1,43 @@
+/* Styles for the progress tracker container */
+.progress-tracker {
+    margin: 20px; /* Add some margin */
+    padding: 15px; /* Add padding */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+}
+
+/* Individual task styling */
+.task {
+    margin: 10px 0; /* Space between tasks */
+    color: black; /* Text color for tasks */
+}
+
+/* Loading message styling */
+.loading-message {
+    color: black; /* Change loading message color to yellow */
+    font-weight: bold; /* Make the loading message bold */
+}
+
+/* Quiz button styling */
+.quiz-button {
+    margin-top: 10px; /* Space above the button */
+    background-color: #007bff; /* Button color (blue) */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+    .quiz-button:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
+
+/* Completion message styling */
+.completion-message {
+    color: black; /* Change completion message color to yellow */
+    margin-top: 10px; /* Space above the message */
+    font-weight: bold; /* Make the completion message bold */
+}

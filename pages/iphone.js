@@ -1,6 +1,8 @@
-import { useState } from 'react';
+﻿import { useState, useEffect } from 'react';
 import IphoneSearch from '../app/IphoneSupport/IphoneSearch';
+import ProgressTracker from '../Checkpoints/ProgressTracker';
 import '../app/IphoneSupport/IphoneSupport.css';
+import './IphoneQuiz.js'
 
 export default function IphonePage() {
     const [videoComments, setVideoComments] = useState([[], [], []]);
@@ -9,6 +11,36 @@ export default function IphonePage() {
     const [nestedReplyInputs, setNestedReplyInputs] = useState([[], [], []]);
     const [uploadedVideos, setUploadedVideos] = useState([[], [], []]);
     const [searchQuery, setSearchQuery] = useState('');
+    const [canProceed, setCanProceed] = useState(false);
+    const [showTasks, setShowTasks] = useState(false);
+    const [message, setMessage] = useState('');
+    const [reloadKey, setReloadKey] = useState(0); // New state variable to trigger re-render
+    const IphonePage = () => {
+        const [quizPassed, setQuizPassed] = useState(false);
+
+        useEffect(() => {
+            const passed = localStorage.getItem('quizPassed');
+            if (passed === 'true') {
+                setQuizPassed(true);
+                setMessage('Congratulations! You have passed the quiz! 🎉');
+                localStorage.removeItem('quizPassed'); // Optionally remove after reading
+            }
+        }, []);
+
+        return (
+            <div className="min-h-screen bg-black text-white flex flex-col items-center">
+                <h1 className="glow cursive-font animate-fadeIn">iPhone Video Guides</h1>
+                {quizPassed && (
+                    <div className="success-message">
+                        {message}
+                    </div>
+                )}
+                {/* Other components like IphoneSearch and ProgressTracker */}
+                <IphoneSearch />
+                <ProgressTracker />
+            </div>
+        );
+    }
 
     const handleCommentSubmit = (index) => {
         const commentInput = commentInputs[index];
@@ -67,10 +99,42 @@ export default function IphonePage() {
         console.log('Searching for:', searchQuery);
     };
 
+    const handleCompletion = (isComplete) => {
+        setCanProceed(isComplete);
+        if (isComplete) {
+            setReloadKey((prev) => prev + 1); // Increment to trigger a re-render
+        }
+    };
+
     return (
         <div className="min-h-screen bg-black text-white flex flex-col items-center">
             <h1 className="glow cursive-font animate-fadeIn">iPhone Video Guides</h1>
             <IphoneSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleSearch={handleSearch} />
+
+            <button
+                className="toggle-tasks-button mb-4"
+                onClick={() => setShowTasks((prev) => !prev)}
+            >
+                {showTasks ? 'Hide Tasks' : 'Show Tasks'}
+            </button>
+
+            {showTasks && (
+                <div className="progress-tracker-box">
+                    <ProgressTracker onCompletion={handleCompletion} />
+                </div>
+            )}
+
+            {!canProceed && (
+                <div className="warning">
+                    Please complete all tasks to proceed!
+                </div>
+            )}
+
+            {message && (
+                <div className="success-message">
+                    {message}
+                </div>
+            )}
 
             {['https://www.youtube.com/watch?v=0nG7pAXRgvE', 'https://www.youtube.com/watch?v=pXvd8HNAdAk', 'https://www.youtube.com/watch?v=eyW7ytgNVwU'].map((videoUrl, index) => (
                 <div key={index} className="video-section mb-8">
@@ -194,7 +258,7 @@ export default function IphonePage() {
                                                     </div>
                                                 )}
 
-                                                {reply.replies && reply.replies.length > 0 && (
+                                                {reply.replies.length > 0 && (
                                                     <div className="nested-replies">
                                                         {reply.replies.map((nestedReply, nestedReplyIndex) => (
                                                             <p key={nestedReplyIndex} className="reply-text">Nested Reply: {nestedReply}</p>
@@ -210,6 +274,7 @@ export default function IphonePage() {
                     </div>
                 </div>
             ))}
+
         </div>
     );
 }
